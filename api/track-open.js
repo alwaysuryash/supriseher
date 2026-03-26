@@ -1,23 +1,28 @@
 import { Resend } from 'resend';
 
+// This helps us see if the API Key is actually loaded
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export default async function handler(req, res) {
-  if (req.method === 'POST') {
-    try {
-      const data = await resend.emails.send({
-        from: 'Tracking <onboarding@resend.dev>', // Or your verified domain
-        to: 'yeswanthbikkavolu@gmail.com', // YOUR email address
-        subject: '🚨 SHE OPENED THE LINK! ❤️',
-        html: `<p>Your surprise website was just opened at <strong>${new Date().toLocaleString()}</strong>.</p>`
-      });
+  console.log("Track-open triggered!"); // This will show in Vercel Logs
 
-      res.status(200).json({ success: true, data });
-    } catch (error) {
-      res.status(500).json({ error: error.message });
-    }
-  } else {
-    res.setHeader('Allow', ['POST']);
-    res.status(405).end(`Method ${req.method} Not Allowed`);
+  if (!process.env.RESEND_API_KEY) {
+    console.error("Missing RESEND_API_KEY in Vercel Settings");
+    return res.status(500).json({ error: "API Key missing" });
+  }
+
+  try {
+    const data = await resend.emails.send({
+      from: 'onboarding@resend.dev', 
+      to: 'yeswanthbikkavolu@gmail.com', 
+      subject: '🚨 SURPRISE OPENED!',
+      html: `<strong>She is looking at the letter right now!</strong>`
+    });
+
+    console.log("Email sent successfully:", data);
+    return res.status(200).json(data);
+  } catch (error) {
+    console.error("Resend Error:", error);
+    return res.status(500).json({ error: error.message });
   }
 }
