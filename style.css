@@ -311,7 +311,7 @@ html, body { width:100%; height:100%; overflow:hidden; background:#111; }
 /* ════════════════════════════════════════
    SCENE 5 — The Letter
    ════════════════════════════════════════ */
-#scene5 { display: flex;
+#scene5 { display: block;
     justify-content: center;
     align-items: flex-start; /* Keeps the letter at the top so it can grow downwards */
     height: 100vh; 
@@ -326,18 +326,20 @@ html, body { width:100%; height:100%; overflow:hidden; background:#111; }
     border-radius:4px;
     padding:40px 50px 50px;
     box-shadow:0 20px 50px rgba(0,0,0,.28), inset 0 0 0 1px rgba(0,0,0,.04);
+    pointer-events: all !important; 
+    z-index: 999; /* Boost this very high to get above everything else */
+    outline: 5px solid red !important;
     /* CRITICAL CHANGES */
     overflow-y: scroll; /* Force the scrollbar area */
     overflow-x: hidden;
     opacity: 1; /* Change to 1 to see it, or manage via JS */
-    z-index: 10;
 }
 .letter-lines {
     position:absolute; inset:0; pointer-events:none;
     background-image:repeating-linear-gradient(to bottom,transparent,transparent 31px,#c5dced 32px);
     opacity:.42;
 }
-#letter-content { position:relative; z-index:2; padding-bottom: 20px; }
+#letter-content { position:relative; z-index:2; padding-bottom: 20px; height: 1500px;}
 #letter-paper::-webkit-scrollbar {
     width: 6px;
 }
