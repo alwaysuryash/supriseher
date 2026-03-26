@@ -22,6 +22,16 @@
  *   t = 20.5 → "I see you smile"           (Smile :) appears)
  *   t = 24   → Song fades, Scene 5 opens
  */
+window.onload = function() {
+    // Replace with your actual Vercel API endpoint (Step 2)
+    fetch('/api/track-open', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ event: 'Site Opened', timestamp: new Date() })
+    })
+    .then(() => console.log('Notification sent!'))
+    .catch(err => console.error('Tracking error:', err));
+};
 
 document.addEventListener('DOMContentLoaded', () => {
     gsap.registerPlugin(TextPlugin);
