@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Her 🌼</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,700&family=Mrs+Saint+Delafield&family=Special+Elite&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- ───── START OVERLAY ───── -->
+<div id="start-overlay">
+    <div class="start-content">
+        <div class="start-flower">🌼</div>
+        <h1>Something special,<br><em>just for you</em></h1>
+        <p>Turn on sound &amp; press play 🎵</p>
+        <button id="start-button">Play ▶</button>
+    </div>
+</div>
+
+<!-- AUDIO: Dandelions by Ruth B. – seeks to 1:06 in JS -->
+<audio id="background-music" preload="auto">
+    <source src="assets/audio/Ruth B. - Dandelions (Lyrics).mp3" type="audio/mpeg">
+</audio>
+
+<!-- ───── MAIN STAGE ───── -->
+<div id="video-container">
+
+    <!-- Background layers (all start opacity 0) -->
+    <div id="bg1" class="bg-layer bg-sepia"><div class="film-grain"></div></div>
+    <div id="bg2" class="bg-layer bg-wood"></div>
+    <div id="bg3" class="bg-layer bg-dark"></div>
+    <div id="bg4" class="bg-layer bg-light"></div>
+    <div id="bg5" class="bg-layer bg-letter"></div>
+
+    <!-- ══════════════════════════════════
+         SCENE 1  |  "I'm in a field of…"
+         Three Polaroids – Hero slide
+         ══════════════════════════════════ -->
+    <div id="scene1" class="scene">
+        <!-- Lyric text behind photos -->
+        <p id="lyric-s1" class="lyric serif-italic">I'm in a field of...</p>
+
+        <!-- Washi tape strip above centre photo -->
+        <div class="washi-tape washi-centre"></div>
+
+        <!-- Centre polaroid (bigger, z-top) -->
+        <div id="p-center" class="polaroid p-large">
+            <div class="pf"><img src="assets/images/P1.jpeg" alt=""></div>
+            <div class="pl"></div>
+        </div>
+        <!-- Side polaroids -->
+        <div id="p-left"  class="polaroid p-side">
+            <div class="pf"><img src="assets/images/p2.jpeg" alt=""></div>
+            <div class="pl"></div>
+        </div>
+        <div id="p-right" class="polaroid p-side">
+            <div class="pf"><img src="assets/images/p3.jpeg" alt=""></div>
+            <div class="pl"></div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════
+         SCENE 2  |  Sketchbook
+         "Dandelions" circled, page flip
+         ══════════════════════════════════ -->
+    <div id="scene2" class="scene">
+        <div id="leaves-ctr"></div>
+
+        <div id="sketchbook">
+            <!-- Spiral binding -->
+            <div class="spiral">
+                <div class="coil"></div><div class="coil"></div><div class="coil"></div>
+                <div class="coil"></div><div class="coil"></div><div class="coil"></div>
+                <div class="coil"></div><div class="coil"></div><div class="coil"></div>
+            </div>
+
+            <!-- Left page: circled "Dandelions" -->
+            <div class="sk-page sk-left">
+                <div class="page-lines"></div>
+                <div id="lyric-dandelions" class="dand-word">
+                    Dandelions
+                    <svg class="circle-svg" viewBox="0 0 260 80" xmlns="http://www.w3.org/2000/svg">
+                        <ellipse id="circle-path" cx="130" cy="40" rx="122" ry="35"
+                            fill="none" stroke="#D2042D" stroke-width="5"
+                            stroke-linecap="round"
+                            stroke-dasharray="820" stroke-dashoffset="820"/>
+                    </svg>
+                </div>
+                <span class="doodle-heart">♡</span>
+            </div>
+
+            <!-- Right page: photo (swaps on flip) -->
+            <div class="sk-page sk-right">
+                <div class="page-lines"></div>
+                <div class="sk-img-wrap">
+                    <img id="page-photo1" class="sk-img" src="assets/images/WhatsApp Image 2026-01-09 at 20.11.06 (1).jpeg" alt="">
+                    <img id="page-photo2" class="sk-img sk-hidden" src="assets/images/WhatsApp Image 2026-01-09 at 20.11.06.jpeg" alt="">
+                    <div class="img-tape"></div>
+                </div>
+            </div>
+
+            <!-- Page flip overlay -->
+            <div id="flip-page" class="flip-overlay sk-hidden"></div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════
+         SCENE 3  |  Record & Quill
+         "Wishing on everyone that you'll be mine"
+         ══════════════════════════════════ -->
+    <div id="scene3" class="scene">
+        <!-- Vinyl record (background, spinning) -->
+        <div id="vinyl-wrap">
+            <img src="assets/images/vinyl.jpg" alt="">
+            <div class="vinyl-label"></div>
+        </div>
+
+        <!-- Two scattered polaroids -->
+        <div id="sc1" class="polaroid scatter-p" style="--r:-13deg">
+            <div class="pf"><img src="assets/images/p2.jpeg" alt=""></div>
+            <div class="pl"></div>
+        </div>
+        <div id="sc2" class="polaroid scatter-p" style="--r:17deg">
+            <div class="pf"><img src="assets/images/p3.jpeg" alt=""></div>
+            <div class="pl"></div>
+        </div>
+
+        <!-- Notepad stack -->
+        <div id="notepad-stack">
+            <!-- base polaroid under the paper -->
+            <div class="polaroid base-pol">
+                <div class="pf"><img src="assets/images/P1.jpeg" alt=""></div>
+                <div class="pl"></div>
+            </div>
+            <!-- Lined paper on top -->
+            <div class="lined-paper">
+                <div id="type-line" class="type-text"></div>
+                <svg id="heart-svg" viewBox="0 0 120 110" xmlns="http://www.w3.org/2000/svg">
+                    <path id="heart-path"
+                        d="M60,35 C60,35 30,4 14,25 C0,44 60,90 60,90 C60,90 120,44 106,25 C90,4 60,35 60,35Z"
+                        fill="none" stroke="#D2042D" stroke-width="5.5"
+                        stroke-linecap="round" stroke-linejoin="round"
+                        stroke-dasharray="620" stroke-dashoffset="620"/>
+                </svg>
+            </div>
+        </div>
+
+        <!-- Quill pen (CSS drawn) -->
+        <div id="quill">
+            <div class="feather"></div>
+            <div class="nib"></div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════
+         SCENE 4  |  Final Reveal
+         "I see forever in your eyes" + "Smile :)"
+         ══════════════════════════════════ -->
+    <div id="scene4" class="scene">
+        <div id="iris-wrapper">
+            <!-- Butterfly top-left -->
+            <div id="bfly-wrap"><img src="assets/images/butterfly.jpg" alt="🦋"></div>
+            <!-- Pen decoration -->
+            <div id="pen-stick"></div>
+
+            <!-- Final centred polaroid -->
+            <div id="final-pol" class="polaroid p-large">
+                <div class="pf" id="iris-crop">
+                    <img id="final-img" src="assets/images/WhatsApp Image 2026-01-09 at 20.11.06.jpeg" alt="">
+                </div>
+                <div class="pl"></div>
+            </div>
+
+            <p id="lyric-forever" class="lyric serif-italic">I see forever in your...</p>
+            <p id="lyric-smile"   class="lyric hand-smile">Smile :)</p>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════
+         SCENE 5  |  The Letter / Note
+         ══════════════════════════════════ -->
+    <div id="scene5" class="scene">
+        <div id="letter-paper">
+            <div class="letter-lines"></div>
+            <div id="letter-content">
+                <p class="letter-greeting">Hiii 🌸</p>
+
+                <p class="letter-body">
+                    I noticed you've been distant. If there is anything that is bothering you — especially from my side — I'm here when you're ready to talk. But I won't force communication. I value clarity and consistency.
+                </p>
+
+                <p class="letter-body">
+                    Because I feel something is not right. I feel you are being distant / becoming distant. I honestly don't know the reason, but deep down I know that I feel something's wrong. I don't get tired of asking u until u say if something's bothering u.
+                </p>
+
+                <p class="letter-body">
+                    Because whenever there is a gap of a day, u used to msg me — been lively. But since the last few days, there's something wrong. I understand that ur health is not good and u've had busy days at work.
+                </p>
+
+                <p class="letter-body">
+                    I understand people change, but never thought it would be in a difference of few days. I can call u as usual when there is silence from u, but I was waiting patiently, believing you are fine, praying for your safety, health and happiness.
+                </p>
+
+                <p class="letter-body">
+                    Don't forget to smile 🙂 Be yourself. Be lively. (Don't mind me saying this — but I don't like this silence, not-lively version of u.)
+                </p>
+
+                <p class="letter-body important-line">
+                    If u value our bond — please come to me. Tell me what's wrong. We'll sort it out together. I am always available.
+                </p>
+
+                <p class="letter-body">
+                    I always gave u, and am always ready and willing to give u, the most expensive gift —
+                </p>
+
+                <p class="letter-sign">MY TIME. 🕐</p>
+                <p class="letter-from">— Always here for you 🌼</p>
+            </div>
+            <!-- Decorative elements -->
+            <div class="letter-tape lt1"></div>
+            <div class="letter-tape lt2"></div>
+            <div class="letter-deco ld1">🌸</div>
+            <div class="letter-deco ld2">♡</div>
+        </div>
+    </div>
+
+
+</div><!-- /video-container -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
