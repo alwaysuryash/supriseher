@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
            Vocal "mine" lands at audio=75.5s → t=9.0
            Duration = 9.0 - 5.5 = 3.5 s                          */
         tl.to('#type-line', {
-            text:{ value:"Wishing on every one\nthat you'd be mine…" },
+            text:{ value:"Wishing on every one\nthat you'd be fmine…" },
             duration:3.5, ease:'none'
         }, 5.5);
 
